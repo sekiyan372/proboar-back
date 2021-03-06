@@ -5,13 +5,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(article: params[:article])
+    @article = Article.create(artist: params[:artist])
     render json: @article
   end
 
   def update
     @article = Article.find(params[:id])
-    @article.update_attributes(article: params[:article]);
+    @article.update_attributes(artist: params[:artist]);
     render json: @article
   end
 
