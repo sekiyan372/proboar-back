@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(artist: params[:artist])
+    @article = Article.create(article_params)
     render json: @article
   end
 
@@ -23,4 +23,11 @@ class ArticlesController < ApplicationController
       render json: @article.errors, status: :unprocessable_entity
     end
   end
+
+  private
+
+    def article_params
+      params.require(:article).permit(:artist, :band)
+    end
 end
+
